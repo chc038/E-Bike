@@ -1,0 +1,17 @@
+To set up virtual keyboard:
+	`sudo apt install onboard`
+
+To copy make hard copy of start.sh:
+	`ln start.sh new.sh`
+	then rename and move new.sh to desired location
+
+To check whether screen is on remotely:
+	`xinput --list`
+	and see if TSTS MTouch is listed (touchscreen touch function)
+
+To install open cv
+	`sudo apt install python3-opencv`
+	and lookup error messages to install other dependent libraries
+
+To install ImageTk:
+	`sudo apt-get install python3-pil.imagetk`
