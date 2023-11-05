@@ -47,7 +47,7 @@
 - Remote control of things such as lights and viewing live camera feed through VNC remote desktop.
   <img width="500" alt="Screenshot 2023-11-04 at 6 22 55 PM" src="https://github.com/chc038/E-Bike/assets/146500723/2c16cf52-e460-4481-a4e6-7108d24fc3dc">
 
-- 8" touchscreen showing a custon GUI serves as dashboard of the e-bike.
+- 7" touchscreen showing a custon GUI serves as dashboard of the e-bike.
   <img width="500" alt="Screenshot 2023-11-04 at 6 24 04 PM" src="https://github.com/chc038/E-Bike/assets/146500723/52a2c5a4-00b1-4148-9939-b0fe712caa43">
 
 - 3D printed custom housing for electrical components           
