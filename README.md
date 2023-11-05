@@ -1,6 +1,7 @@
 # E-Bike Project Description
  I started this e-bike project many years ago. Starting with converting this bicycle to an e-bike, I have made many big changes to the powertrain and other systems throughout the years. The newest version is documented in this depository, including CAD files for the electric powertrain and python codes for the security system.                    
- <img width="500" alt="Screenshot 2023-11-04 at 5 26 23 PM" src="https://github.com/chc038/E-Bike/assets/146500723/63e6e97b-5242-457f-989b-c872a08d6f59">
+ <img width="500" alt="Screenshot 2023-11-04 at 5 46 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/c9ce0569-adf2-4f7a-9de5-bf45d7e73fc9">
+
 
 
 
@@ -26,11 +27,12 @@
 - Custom made lithium-ion battery pack by spot welding together 42 21700 cells in a 14S3P configuration.
   <img width="500" alt="Screenshot 2023-11-04 at 1 00 46 PM" src="https://github.com/chc038/E-Bike/assets/146500723/8d69001e-b928-4d19-a65b-23d824ecae6a">
 
-- More pictures of the electric powertrain below.             
-  <img width="500" alt="Screenshot 2023-11-04 at 5 30 08 PM" src="https://github.com/chc038/E-Bike/assets/146500723/30afed9b-8ccc-47c7-aa66-f2ced2c35e1b">
-                          
-  <img width="240" alt="Screenshot 2023-11-04 at 5 30 36 PM" src="https://github.com/chc038/E-Bike/assets/146500723/38a72e39-93bb-4df4-80cb-c9291b43fc8f">
-  <img width="260" alt="Screenshot 2023-11-04 at 5 31 03 PM" src="https://github.com/chc038/E-Bike/assets/146500723/a65144fd-ec33-4b72-8f70-5bbc5b7d6a31">
+- More pictures of the electric powertrain below.                   
+  <img width="500" alt="Screenshot 2023-11-04 at 5 30 08 PM" src="https://github.com/chc038/E-Bike/assets/146500723/680c208d-1d2d-4b31-8d12-51081b808b94">
+                                                   
+  <img width="240" alt="Screenshot 2023-11-04 at 5 30 36 PM" src="https://github.com/chc038/E-Bike/assets/146500723/4a39eb37-b202-4b2d-9359-3a15555519a0">
+  <img width="260" alt="Screenshot 2023-11-04 at 5 31 03 PM" src="https://github.com/chc038/E-Bike/assets/146500723/5bc778e5-5d76-4545-9186-9d3da128d138">
+
 
 
 
