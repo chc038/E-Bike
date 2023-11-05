@@ -1,10 +1,13 @@
 # E-Bike Project Description
- I started this e-bike project many years ago. Starting with converting this bicycle to an e-bike, I have made many big changes to the powertrain and other systems throughout these years. The newest version is documented in this depository, including CAD files for the electric powertrain and python codes for the security system.
+ I started this e-bike project many years ago. Starting with converting this bicycle to an e-bike, I have made many big changes to the powertrain and other systems throughout the years. The newest version is documented in this depository, including CAD files for the electric powertrain and python codes for the security system.                    
+ <img width="500" alt="Screenshot 2023-11-04 at 5 26 23 PM" src="https://github.com/chc038/E-Bike/assets/146500723/63e6e97b-5242-457f-989b-c872a08d6f59">
+
+
 
 # Features
 - 30 mph top speed, 0-30 time of approximately 3 seconds.
 - Dual electric motors with peak power output of more than 5000W.
-- 48V, 12Ah lithium-ion battery, 14S3P cell arrangement. 
+- Custom made 48V, 12Ah lithium-ion battery pack. 
 - 15 miles of range at top speed. Range can be extended to around 40 miles with additional battery packs.
 - Smart anti-theft system with vibration detection, GPS tracking, camera pointing at the lock, and email notifications.
 
@@ -19,17 +22,22 @@
 - Plastic parts were 3D printed on my modified Ender-3 in PLA and Nylon; aluminum parte were machined on my DIY CNC mill
   <img width="300" alt="Screenshot 2023-11-04 at 10 50 42 AM" src="https://github.com/chc038/E-Bike/assets/146500723/7c255690-053b-46b1-87e3-5f7d77538c39">
   <img width="270" alt="Screenshot 2023-11-04 at 10 51 35 AM" src="https://github.com/chc038/E-Bike/assets/146500723/f89b02d8-25d2-4882-9aa0-3c9c91a85e04">
-
-- Parts were designed to be bolted together. More pictures of the assembly below.
   
 - Custom made lithium-ion battery pack by spot welding together 42 21700 cells in a 14S3P configuration.
   <img width="500" alt="Screenshot 2023-11-04 at 1 00 46 PM" src="https://github.com/chc038/E-Bike/assets/146500723/8d69001e-b928-4d19-a65b-23d824ecae6a">
-  <img width="500" alt="Screenshot 2023-11-04 at 1 01 14 PM" src="https://github.com/chc038/E-Bike/assets/146500723/ed96f395-0efa-4981-b115-0a2af93e2d23">
+
+- More pictures of the electric powertrain below.             
+  <img width="500" alt="Screenshot 2023-11-04 at 5 30 08 PM" src="https://github.com/chc038/E-Bike/assets/146500723/30afed9b-8ccc-47c7-aa66-f2ced2c35e1b">
+                          
+  <img width="240" alt="Screenshot 2023-11-04 at 5 30 36 PM" src="https://github.com/chc038/E-Bike/assets/146500723/38a72e39-93bb-4df4-80cb-c9291b43fc8f">
+  <img width="260" alt="Screenshot 2023-11-04 at 5 31 03 PM" src="https://github.com/chc038/E-Bike/assets/146500723/a65144fd-ec33-4b72-8f70-5bbc5b7d6a31">
+
+
 
 
 
 # Security System
-- System is based on a raspeberry pi computer with multiple sensors connected such as GPS module, IMU, ADC. All the programs that makes this system work are written in python. I made this system for theft prevension purpose.
+- System is based on a raspeberry pi computer with multiple sensors connected such as GPS module, IMU, ADC. All the programs that makes this system work are written in python. I made this system for theft prevension purposes.
   
 - In lock mode, system automatically sends emails containing gps coordinates and picture when suspicious activities such as vibration or significant changes in GPS coordinates are detected.                  
   <img width="500" alt="Screenshot 2023-11-04 at 12 47 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/2e3aaa84-6ae5-48a0-96e9-6360fdff3f78">
