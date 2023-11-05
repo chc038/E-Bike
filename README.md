@@ -21,8 +21,7 @@
   <img width="500" alt="Screenshot 2023-10-03 at 3 54 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/54a93b7c-6a0e-4a5b-b0a0-0592d6931f8e">
 
 - Plastic parts were 3D printed on my modified Ender-3 in PLA and Nylon; aluminum parte were machined on my DIY CNC mill
-  <img width="350" alt="Screenshot 2023-11-04 at 6 11 58 PM" src="https://github.com/chc038/E-Bike/assets/146500723/2a54462b-1fb1-4c8a-93b5-2682f4c1a1b3">
-  <img width="433" alt="Screenshot 2023-11-04 at 6 11 41 PM" src="https://github.com/chc038/E-Bike/assets/146500723/768787d0-ab18-4316-90c1-7aaf55beaaae">
+  <img width="500" alt="Screenshot 2023-11-04 at 9 09 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/bd45c499-08dc-4cfe-80fe-32a6447f7c04">
   
 - Custom made lithium-ion battery pack by spot welding together 42 21700 cells in a 14S3P configuration.
   <img width="500" alt="Screenshot 2023-11-04 at 6 14 55 PM" src="https://github.com/chc038/E-Bike/assets/146500723/b7e855f1-4201-4519-81a3-1e68df08a4a2">
