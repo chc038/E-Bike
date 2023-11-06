@@ -6,7 +6,7 @@
 
 
 # Features
-- 30 mph top speed, 0-30 time of approximately 3 seconds.
+- 30 mph top speed, 0-30 time of approximately 5 seconds.
 - Dual electric motors with peak power output of more than 5000W.
 - Custom made 48V, 12Ah lithium-ion battery pack. 
 - 15 miles of range at top speed. Range can be extended to around 40 miles with additional battery packs.
