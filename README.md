@@ -7,7 +7,7 @@
 
 # Features
 - 30 mph top speed
-- Accelerated from 0 to 30mph in 4.8 seconds.
+- Accelerates from 0 to 25mph in 3.0 seconds; from 0 to 30mph in 4.8 seconds. (Measured with the same 10Hz GPS module, my Corolla Hybrid did 0-25 in 3.2 seconds and 0-30 in 3.7 seconds) 
 - Dual electric motors with peak power output of 6000W.
 - Custom made 48V, 12Ah lithium-ion battery pack. 
 - 15 miles of range at top speed. Range can be extended to around 40 miles with additional battery packs.
