@@ -16,7 +16,7 @@ def getGPSLocation():
     gps_info = getGPS()
     if gps_info != None:
         return (str(round(gps_info['latitude'],6)) + ','+
-                str(round(gps_info['logitude'], 6)))
+                str(round(gps_info['longitude'], 6)))
     else:
         return ""
 
@@ -62,8 +62,8 @@ def writeGPS(gps_info):
     file.write(json.dumps(gps_info, indent=2))
     file.close()
 
-def writeGPSInfo(latitude, logitude, speed, tme):
-    gps_info = {'latitude': latitude, 'logitude': logitude, 'speed': speed, 'time': tme}
+def writeGPSInfo(latitude, longitude, speed, tme):
+    gps_info = {'latitude': latitude, 'longitude': longitude, 'speed': speed, 'time': tme}
     writeGPS(gps_info)
     
 def findDistance(lat1, log1, lat2, log2):

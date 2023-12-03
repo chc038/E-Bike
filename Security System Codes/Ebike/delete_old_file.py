@@ -37,8 +37,11 @@ while prog.isRunning():
     #videos
     delete_old_directories('/home/pi/Videos/Camera_0', days=3)
 
-    #data
-    delete_old_directories('/home/pi/Documents/Data', days=30)
+    #accerometer data
+    delete_old_directories('/home/pi/Documents/Accel_Data', days=10)
+    
+    #GPS data
+    delete_old_directories('/home/pi/Documents/GPS_Data', days=10)
     
     #wait 3 hours before next check
     prog.sleep(3*3600)

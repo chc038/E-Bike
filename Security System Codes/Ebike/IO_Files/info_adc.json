@@ -1,8 +1,8 @@
 {
-  "key_switch": 0,
-  "battery_48v": 51.389268817204304,
-  "bus_12v": 12.22625376344086,
-  "main_current": 0.28094158674803876,
-  "cpu_temperature": 60.244133333333345,
-  "memory": "102G"
+  "key_switch": 1,
+  "battery_48v": 56.94675268817205,
+  "bus_12v": 12.210094623655914,
+  "main_current": 0.20979947689625159,
+  "cpu_temperature": 65.74723333333334,
+  "memory": "50G"
 }

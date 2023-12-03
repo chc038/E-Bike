@@ -1,6 +1,6 @@
 from picamera2 import Picamera2
 from picamera2.encoders import H264Encoder
-import cv2 as cv
+import cv2 as cv #sudo apt install python3-opencv
 import time
 import os
 import prog

@@ -1,4 +1,4 @@
-import yagmail
+import yagmail #sudo pip install yagmail
 import email_functions as email
 import prog
 import time

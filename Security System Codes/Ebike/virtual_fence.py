@@ -19,9 +19,9 @@ while prog.isRunning():
         loc = gps.getGPS() #get current location
         if park_loc != None and loc != None: #if successfullt gathered info
             park_lat = park_loc['latitude'] #get park latitude
-            park_log = park_loc['logitude'] #get park logitude
+            park_log = park_loc['longitude'] #get park longitude
             lat = loc['latitude'] #get current latitude
-            log = loc['logitude'] #get current logitude
+            log = loc['longitude'] #get current longitude
 
             #check for location differences
             if gps.findDistance(park_lat, park_log, lat, log) > 300: #if difference too big

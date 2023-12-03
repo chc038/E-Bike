@@ -15,3 +15,21 @@ To install open cv
 
 To install ImageTk:
 	`sudo apt-get install python3-pil.imagetk`
+
+To install adafruit-mcp3008 for adc:
+	`sudo pip install adafruit-mcp3008`
+
+To install yagmail to send emails:
+	`sudo pip install yagmail`
+
+To install mpu6050 for accelerometer:
+	`sudo pip install mpu6050-raspberrypi`
+
+To communicate with vesc:
+	download from: https://github.com/LiamBindle/PyVESC
+	dependency: pip install crccheck
+	may need to change "_comm_forward_can = 34" in pyvesc/protocol/base.py for can bus forwarding to work
+
+To install adafruit_gpsfor GPS module:
+	sudo pip3 install adafruit-circuitpython-gps
+

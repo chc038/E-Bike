@@ -1,3 +1,4 @@
+#sudo pip install mpu6050-raspberrypi
 from mpu6050 import mpu6050
 import time
 import prog
@@ -7,7 +8,7 @@ import io_functions as io
 
 COSA = 0.9455185756 #19 deg
 SINA = 0.3255681545
-DATA_FOLDER = "/home/pi/Documents/Data"
+DATA_FOLDER = "/home/pi/Documents/Accel_Data"
 DATA_HEADER = "tm(s),accel_x(m/s),accel_y(m/s),accel_z(m/s)"
 
 class LoopTimer():
@@ -40,8 +41,7 @@ class DataFile():
             self.tm = time.time()
             to_write += self.header + '\n'
         #write content to file
-        file_time = round(time.time()-self.tm, 2)
-        to_write += str(file_time) + ',' + content + '\n'
+        to_write += content + '\n'
         with open(filename, 'a') as file:
             file.write(to_write)
             
@@ -81,6 +81,7 @@ while prog.isRunning():
         
         #write accel data to storage
         data_str = ""
+        data_str += str(round(time.time(), 2)) + ','
         data_str += str(round(accel_data['x'], 5)) + ','
         data_str += str(round(accel_data['y'], 5)) + ','
         data_str += str(round(accel_data['z'], 5))
