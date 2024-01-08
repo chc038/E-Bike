@@ -34,6 +34,7 @@ python3 batteries_check.py&
 
 #other
 python3 delete_old_file.py&
+python3 charger.py&
 
 #wait to quit program
 bash wait_to_quit.sh

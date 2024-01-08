@@ -1,0 +1,61 @@
+import requests
+import time
+import json
+import prog
+
+def readSchedule(filename='Program_Files/charge_schedule.json'):
+    file = open(filename)
+    content = file.read()
+    file.close()
+    return json.loads(content)
+
+
+PLUG_IP = "192.168.1.136"
+BASE_CMD = "http://" + PLUG_IP + "/cm?user=admin&password=Ulw9f4&"
+ON_CMD = BASE_CMD + "cmnd=Power%20ON"
+OFF_CMD = BASE_CMD + "cmnd=Power%20OFF"
+
+W_DAY = {'Mon':0, 'Tue':1, 'Wed':2, 'Thu':3, 'Fri':4, 'Sat':5, 'Sun':6}
+
+
+last_cmd_time = 0.0
+
+prog.start()
+while prog.isRunning():
+    try:
+        #filter out commands today
+        commands = readSchedule()
+        commands_today = [command for command in commands
+                          if W_DAY[command['day']]==time.localtime().tm_wday]
+
+        #change time to epoch seconds for comparison
+        str_today = time.strftime("%B %d %Y ")
+        start_time_today = time.mktime(time.strptime(str_today+'00:00', "%B %d %Y %H:%M"))
+        commands_today = [{'time': time.mktime(time.strptime(str_today+command['time'], "%B %d %Y %H:%M"))
+                           , 'cmd': command['cmd']}
+                          for command in commands_today]
+
+        #filter out commands between last check and now
+        commands_today = [command for command in commands_today
+                          if last_cmd_time <= command['time'] and command['time'] <= time.time()]
+
+        #sort out the latest command
+        if len(commands_today) > 0:
+            commands_today.sort(key=lambda command: command['time'], reverse=True)
+            last_cmd_time = time.time()
+
+            #execute command
+            cmd = commands_today[0]['cmd']
+            if cmd == 'ON':
+                result = requests.get(ON_CMD)
+                prog.timePrint(repr(result.json()))
+            elif cmd == 'OFF':
+                result = requests.get(OFF_CMD)
+                prog.timePrint(repr(result.json()))
+            else:
+                prog.timePrint("Invalid Command: " + str(cmd))
+
+    except Exception as e:
+        prog.timePrint(repr(e))
+
+    time.sleep(2)
