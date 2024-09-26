@@ -60,9 +60,10 @@ aux_battery = Battery(9.3)
 
 prog.start()
 while prog.isRunning():
-    b48 = io.mainBatteryVoltage()
+    vesc_on = io.vescState()
+    b48 = io.motorInputVoltage()
     b12 = io.bus12Voltage()
-    if b48 != None:
+    if vesc_on == 1 and b48 != None:
         main_battery.update_voltage(b48)
     if b12 != None:
         aux_battery.update_voltage(b12)

@@ -22,7 +22,7 @@ python3 camera_0.py&
 python3 gui_display.py&
 
 #email
-python3 email_reader.py&
+#python3 email_reader.py&
 python3 email_sender.py&
 
 #security

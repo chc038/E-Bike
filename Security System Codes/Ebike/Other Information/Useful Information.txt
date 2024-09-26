@@ -26,7 +26,8 @@ To install mpu6050 for accelerometer:
 	`sudo pip install mpu6050-raspberrypi`
 
 To communicate with vesc:
-	download from: https://github.com/LiamBindle/PyVESC
+	download from: https://github.com/LiamBindle/PyVESC or
+        pip install git+https://github.com/LiamBindle/PyVESC
 	dependency: pip install crccheck
 	may need to change "_comm_forward_can = 34" in pyvesc/protocol/base.py for can bus forwarding to work
 

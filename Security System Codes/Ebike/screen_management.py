@@ -7,9 +7,6 @@ import subprocess
 import gpiozero as gpio
 
 
-PASSWORD = "110020"
-
-
 class Screen():
     def __init__(self, pin):
         self.ctrl = gpio.LED(pin)
@@ -78,15 +75,10 @@ class Screen():
         return None
 
 
-prev_key_switch = 1
-prev_brake = 0
-prev_button1 = 0
-prev_button2 = 0
 key_error = False
-password_mode = False
-password_start = 0.0
-password_incorrect = 0
-password = ""
+unlock_count = 0
+key_switch_reset = False
+key_switch_reset_count = 0
 
 screen = Screen(22)
 
@@ -97,83 +89,49 @@ while prog.isRunning():
     button1 = io.button1State()
     button2 = io.button2State()
     brake = io.brakeState()
+    lock = security.lockState()
     #--------------------------------------------------
     #special screen and touch operations
     #--------------------------------------------------
-    #enable touchscreen if unlocked/home and keyswitch is also unlocked
-    lock = security.lockState()
+    
+    #turn on screen and touch if unlocked/home and button 1 is pressed
     if lock == '0' or lock == '2':
-        if key_switch == 1 and prev_key_switch == 0: #key just switched to unlock
+        if button1 == 1:
             io.screenOn()
             io.touchOn()
     
-    #turn on screen and touch if home and button 1 is pressed
-    if lock == '2' and button1 == 1:
-        io.screenOn()
-        io.touchOn()
-    
-    #turn on screen and touch if locked, key switch is unlocked, and a password is entered
+    #unlock if locked and key switch is activated
     if lock == '1':
-        #check for key switch error
-        if key_switch == -1 and not key_error:
-            key_error = True
-            prog.namePrint("Key Switch Error!")
-            email.sendPhotoEmail(subject="Key Switch Aleart",
-                                 message = "Key Switch Error!", info=True)
-        elif password_incorrect >= 5 and not key_error:
-            key_error = True
-            prog.namePrint("Incorrect password is entered 5 times!")
-            email.sendPhotoEmail(subject="Key Switch Aleart",
-                                 message = "Incorrect password is entered 5 times!", info=True)
-        #do things if key switch error is never triggered
-        if not key_error:
-            #enter password mode if key is switched into unlocked position
-            if key_switch == 1 and prev_key_switch == 0:
-                password_mode = True
-                password_start = time.time()
-                password = ""
-                security.addDisplayMessage("Key Switch Error!", 30)
-            #exit password mode if it takes too long to enter
-            if password_mode and time.time() - password_start > 60:
-                password_mode = False
-            #password mode
-            if password_mode:
-                #print("Enter Password: " + password)
-                #brake for 0
-                if brake == 1 and prev_brake == 0:
-                    password += '0'
-                #button1 for 1
-                if button1 == 1 and prev_button1 == 0:
-                    password += '1'
-                #button2 for 2
-                if button2 == 1 and prev_button2 == 0:
-                    password += '2'
-                #switch off key switch to confirm
-                if key_switch == 0 and prev_key_switch == 1:
-                    #print("You entered: " + password)
-                    password_mode = False
-                    if password == PASSWORD:
-                        #password is correct: turn on  screen and touch temporaty
-                        security.addDisplayMessage("Wrong Password!", 60)
-                        io.touchOn()
-                    else:
-                        #password is incorrect
-                        security.addDisplayMessage("Incorrect Password!", 15)
-                        password_incorrect += 1
-    elif lock == '0' or lock == '2':
+        #make sure the key was not in the unlock position
+        if not key_switch_reset and key_switch == 0:
+            key_switch_reset_count += 1
+            if key_switch_reset_count >= 10:
+                key_switch_reset = True
+        elif key_switch_reset_count > 1:
+            key_switch_reset_count -= 1
+        if key_switch_reset:
+            #check for key switch error
+            if key_switch == -1 and not key_error:
+                key_error = True
+                prog.namePrint("Key Switch Error!")
+                email.sendPhotoEmail(subject="Key Switch Aleart",
+                                     message = "Key Switch Error!", info=True)
+            #check for key switch activation
+            if not key_error and key_switch == 1:
+                unlock_count += 1
+                if unlock_count > 10:
+                    #unlock system
+                    prog.namePrint("Unlock by Key Switch")
+                    security.unlockSequence()
+                    unlock_count = 0
+                    
+            elif unlock_count > 1:
+                unlock_count -= 1
+    else:
         key_error = False
-        password_mode = False
-        password_incorrect = 0
-    
-    #update previous states
-    if key_switch != None:
-        prev_key_switch = key_switch
-    if brake != None:
-        prev_brake = brake
-    if button1 != None:
-        prev_button1 = button1
-    if button2 != None:
-        prev_button2 = button2
+        key_switch_reset = False
+
+            
     
     #--------------------------------------------------
     #manage touch when screen is on

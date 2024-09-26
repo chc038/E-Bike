@@ -55,6 +55,7 @@ while prog.isRunning():
     try:
         #get data
         data = mpu.get_all_data()
+        #print(data)
         accel_data = data[0]
         gyro_data = data[1]
         temp = data[2]

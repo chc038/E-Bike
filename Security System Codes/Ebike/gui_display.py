@@ -273,29 +273,30 @@ def updateInfoMidCanv(window_width):
                     / info_mid_spacers.amount)
     info_mid_spacers.updateWidth(width=spacer_width)
     #update motor parameters
-    main_voltage = io.mainBatteryVoltage()
+    #main_voltage = io.mainBatteryVoltage()
     main_current = io.mainBatteryCurrent()
     motor_voltage = io.motorInputVoltage()
     motor_current = io.motorInputCurrent()
     motor2_current = io.motor2InputCurrent()
     vesc_state = io.vescState()
     vesc2_state = io.vesc2State()
-    if main_voltage != None and main_current != None:
-        main_power = main_voltage*main_current
-        motor_canv.itemconfigure(vol_txt, text=str(round(main_voltage, 1))+" V")
-        if vesc_state == 0: #vesc off, ignore vesc data
-            motor_canv.itemconfigure(cur_txt, text=str(round(main_current, 1))+" A")
-            motor_canv.itemconfigure(pwr_txt, text=str(round(main_power))+" W")
-        elif vesc_state == 1 and vesc2_state == 1 and motor_voltage != None and motor_current != None and motor2_current != None:
+    if main_current != None:
+        if vesc_state == 1 and vesc2_state == 1 and motor_voltage != None and motor_current != None and motor2_current != None:
             total_current = main_current + motor_current + motor2_current
-            total_power = main_power + motor_voltage*motor_current
+            total_power = motor_voltage*total_current
             motor_canv.itemconfigure(cur_txt, text=str(round(total_current, 1))+" A")
             motor_canv.itemconfigure(pwr_txt, text=str(round(total_power))+" W")
+            motor_canv.itemconfigure(vol_txt, text=str(round(motor_voltage, 1))+" V")
         elif vesc_state == 1 and motor_voltage != None and motor_current != None:
             total_current = main_current + motor_current
-            total_power = main_power + motor_voltage*motor_current
+            total_power = motor_voltage*total_current
             motor_canv.itemconfigure(cur_txt, text=str(round(total_current, 1))+" A")
             motor_canv.itemconfigure(pwr_txt, text=str(round(total_power))+" W")
+            motor_canv.itemconfigure(vol_txt, text=str(round(motor_voltage, 1))+" V")
+        elif vesc_state == 0: #vesc off, ignore vesc data
+            motor_canv.itemconfigure(cur_txt, text=str(round(main_current, 1))+" A")
+            motor_canv.itemconfigure(pwr_txt, text="0 W")
+            motor_canv.itemconfigure(vol_txt, text="0 V")
     #update speed
     gps_speed = gps.getGPSSpeed()
     gps_age = gps.getGPSAge()
@@ -305,7 +306,7 @@ def updateInfoMidCanv(window_width):
     if gps_speed != None and gps_age != None and gps_age <= 2:
         speed = gps_speed
     elif vesc_state == 1 and motor_rpm != None:
-        speed = motor_rpm * 0.0002099
+        speed = motor_rpm * 4.2089e-4#0.0002099
     if spd_unt == 0:
         speed_canv.itemconfigure(speed_txt, text=round(speed*3.6, 1))
         speed_canv.itemconfigure(speed_unit, text='km/h')

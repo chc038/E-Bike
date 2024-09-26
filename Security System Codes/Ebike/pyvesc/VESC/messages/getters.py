@@ -37,7 +37,36 @@ class GetVersion(metaclass=VESCMessage):
     def __str__(self):
         return f"{self.comm_fw_version}.{self.fw_version_major}.{self.fw_version_minor}"
 
+#original
+# class GetValues(metaclass=VESCMessage):
+#     """ Gets internal sensor data
+#     """
+#     id = VedderCmd.COMM_GET_VALUES
+# 
+#     fields = [
+#         ('temp_fet', 'h', 10),
+#         ('temp_motor', 'h', 10),
+#         ('avg_motor_current', 'i', 100),
+#         ('avg_input_current', 'i', 100),
+#         ('avg_id', 'i', 100),
+#         ('avg_iq', 'i', 100),
+#         ('duty_cycle_now', 'h', 1000),
+#         ('rpm', 'i', 1),
+#         ('v_in', 'h', 10),
+#         ('amp_hours', 'i', 10000),
+#         ('amp_hours_charged', 'i', 10000),
+#         ('watt_hours', 'i', 10000),
+#         ('watt_hours_charged', 'i', 10000),
+#         ('tachometer', 'i', 1),
+#         ('tachometer_abs', 'i', 1),
+#         ('mc_fault_code', 'c', 0),
+#         ('pid_pos_now', 'i', 1000000),
+#         ('app_controller_id', 'c', 0),
+#         ('time_ms', 'i', 1),
+#     ]
 
+
+#modified
 class GetValues(metaclass=VESCMessage):
     """ Gets internal sensor data
     """
@@ -53,16 +82,7 @@ class GetValues(metaclass=VESCMessage):
         ('duty_cycle_now', 'h', 1000),
         ('rpm', 'i', 1),
         ('v_in', 'h', 10),
-        ('amp_hours', 'i', 10000),
-        ('amp_hours_charged', 'i', 10000),
-        ('watt_hours', 'i', 10000),
-        ('watt_hours_charged', 'i', 10000),
-        ('tachometer', 'i', 1),
-        ('tachometer_abs', 'i', 1),
         ('mc_fault_code', 'c', 0),
-        ('pid_pos_now', 'i', 1000000),
-        ('app_controller_id', 'c', 0),
-        ('time_ms', 'i', 1),
     ]
 
 

@@ -2,6 +2,8 @@ import requests
 import time
 import json
 import prog
+import email_functions as email
+import io_functions as io
 
 def readSchedule(filename='Program_Files/charge_schedule.json'):
     file = open(filename)
@@ -10,7 +12,7 @@ def readSchedule(filename='Program_Files/charge_schedule.json'):
     return json.loads(content)
 
 
-PLUG_IP = "192.168.1.136"
+PLUG_IP = "192.168.50.136"
 BASE_CMD = "http://" + PLUG_IP + "/cm?user=admin&password=Ulw9f4&"
 ON_CMD = BASE_CMD + "cmnd=Power%20ON"
 OFF_CMD = BASE_CMD + "cmnd=Power%20OFF"
@@ -54,8 +56,25 @@ while prog.isRunning():
                 prog.timePrint(repr(result.json()))
             else:
                 prog.timePrint("Invalid Command: " + str(cmd))
+        
+        #check main battery voltage
+        vesc_on = io.vescState()
+        b48 = io.motorInputVoltage()
+        #activate charger if low voltage
+        if vesc_on == 1 and b48 != None and b48 < 42.0:
+            time.sleep(60*5)
+            #check again after 5 min
+            b48 = io.mainBatteryVoltage()
+            if b48 != None and b48 < 42.0:
+                prog.timePrint("Activating Charger due to Low Voltage")
+                result = requests.get(ON_CMD)
+                prog.timePrint(repr(result.json()))
+            
 
     except Exception as e:
+        #error activating charger
         prog.timePrint(repr(e))
+        email.sendPhotoEmail(subject="Battery Alearts",
+                             message=time.strftime("Error Activating Charger!\n%c"))
 
     time.sleep(2)

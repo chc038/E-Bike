@@ -22,7 +22,7 @@ while prog.isRunning():
             io.setOutput("turn_signal", 0)
         else:
             io.setOutput("turn_signal", 1)
-    elif right_turn_switch.is_pressed: #right turn signal
+    elif False:#right_turn_switch.is_pressed: #right turn signal
         if turn_signal_timer.passed():
             turn_signal_timer.refresh()
         if turn_signal_timer.getState() == 0:
