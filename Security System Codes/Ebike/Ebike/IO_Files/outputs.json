@@ -1,0 +1,11 @@
+{
+  "ir_light": 1,
+  "brake": 0,
+  "light": 0,
+  "turn_signal": 0,
+  "taillight": 1,
+  "power_12v": 1,
+  "screen": 1,
+  "touch": 0,
+  "motor": 1
+}
