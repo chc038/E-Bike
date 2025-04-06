@@ -14,22 +14,24 @@ right_turn_switch = gpio.Button(12)
 
 prog.start()
 while prog.isRunning():
-     #turn signal switch
-    if left_turn_switch.is_pressed: #left turn signal
-        if turn_signal_timer.passed():
-            turn_signal_timer.refresh()
-        if turn_signal_timer.getState() == 0:
+    #don't do anything if turn signal state is 3
+    if io.getOutput("turn_signal") != 3:
+        #turn signal switch
+        if left_turn_switch.is_pressed: #left turn signal
+            if turn_signal_timer.passed():
+                turn_signal_timer.refresh()
+            if turn_signal_timer.getState() == 0:
+                io.setOutput("turn_signal", 0)
+            else:
+                io.setOutput("turn_signal", 1)
+        elif right_turn_switch.is_pressed:#right_turn_switch.is_pressed: #right turn signal
+            if turn_signal_timer.passed():
+                turn_signal_timer.refresh()
+            if turn_signal_timer.getState() == 0:
+                io.setOutput("turn_signal", 0)
+            else:
+                io.setOutput("turn_signal", 2)
+        else: #no turn signal
             io.setOutput("turn_signal", 0)
-        else:
-            io.setOutput("turn_signal", 1)
-    elif False:#right_turn_switch.is_pressed: #right turn signal
-        if turn_signal_timer.passed():
-            turn_signal_timer.refresh()
-        if turn_signal_timer.getState() == 0:
-            io.setOutput("turn_signal", 0)
-        else:
-            io.setOutput("turn_signal", 2)
-    else: #no turn signal
-        io.setOutput("turn_signal", 0)
     
     time.sleep(0.01)

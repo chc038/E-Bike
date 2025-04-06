@@ -1,4 +1,5 @@
 import json
+import time
 
 OUTPUTS_FILE = "IO_Files/outputs.json"
 INFO_FILE = "IO_Files/info.json"
@@ -174,6 +175,12 @@ def irLightOn():
 def irLightOff():
     setOutput("ir_light", 0)
 
+#turn signal
+def turnSigBlink():
+    setOutput("turn_signal", 3)
+    time.sleep(0.1)
+    setOutput("turn_signal", 0)
+
 #12v output
 def power12vState():
     return getOutput("power_12v")
@@ -236,8 +243,8 @@ def keySwitchState():
     return getInfoADC("key_switch")
 
 #main battery voltage
-def mainBatteryVoltage():
-    return getInfoADC("battery_48v")
+# def mainBatteryVoltage():
+#     return getInfoADC("battery_48v")
 
 #12v bus voltage
 def bus12Voltage():

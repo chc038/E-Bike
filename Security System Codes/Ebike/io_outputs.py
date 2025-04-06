@@ -72,6 +72,10 @@ while prog.isRunning():
             left_turn_signal.off()
             right_turn_signal.on()
             turn_signal_activated = time.time()
+        elif turn_signal_state == 3: #both lights
+            left_turn_signal.on()
+            right_turn_signal.on()
+            turn_signal_activated = time.time()
         
         #ir light
         ir_light_state = outputs["ir_light"]

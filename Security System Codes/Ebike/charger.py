@@ -62,9 +62,9 @@ while prog.isRunning():
         b48 = io.motorInputVoltage()
         #activate charger if low voltage
         if vesc_on == 1 and b48 != None and b48 < 42.0:
-            time.sleep(60*5)
-            #check again after 5 min
-            b48 = io.mainBatteryVoltage()
+            time.sleep(60*1)
+            #check again after 1 min
+            b48 = io.motorInputVoltage()
             if b48 != None and b48 < 42.0:
                 prog.timePrint("Activating Charger due to Low Voltage")
                 result = requests.get(ON_CMD)

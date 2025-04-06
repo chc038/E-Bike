@@ -1,4 +1,4 @@
-#sudo pip install mpu6050-raspberrypi
+#sudo pip install mpu6050-raspberrypi --break-system-packages
 from mpu6050 import mpu6050
 import time
 import prog

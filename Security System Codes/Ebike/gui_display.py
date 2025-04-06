@@ -227,7 +227,8 @@ def updateInfoTopCanv(window_width):
     elif brake_state == 1:
         brake_canv.itemconfigure('brake', outline='white')
     #update chain tension status
-    chain_state = io.chainSensorState()
+    #chain_state = io.chainSensorState()
+    chain_state = 0
     if chain_state == 0:
         brake_canv.itemconfigure(chain_txt, fill='')
     elif chain_state == 1:

@@ -1,8 +1,9 @@
-#sudo pip install adafruit-mcp3008
+#(sudo) pip install adafruit-mcp3008 --break-system-packages
 import Adafruit_GPIO.SPI as SPI
 import Adafruit_MCP3008
 import time
 import io_functions as io
+import security_functions as security
 import prog
 import subprocess
 
@@ -42,7 +43,7 @@ SPI_PORT = 0
 SPI_DEVICE = 0
 mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
 
-battery_48v_average = InputAverage(15)
+#battery_48v_average = InputAverage(15)
 bus_12v_average = InputAverage(30)
 main_current_average = InputAverage(15)
 cpu_temperature_average = InputAverage(30)
@@ -60,11 +61,28 @@ while prog.isRunning():
         infos_adc["key_switch"] = 1
     else:
         infos_adc["key_switch"] = -1
+        
+    #remote receiver
+    remote_channel_0 = mcp.read_adc(4)
+    if remote_channel_0 >= 512:
+        if infos_adc["remote_c0"] == 0:
+            security.unlockSequence()
+        infos_adc["remote_c0"] = 1
+    else:
+        infos_adc["remote_c0"] = 0
+    remote_channel_1 = mcp.read_adc(5)
+    if remote_channel_1 >= 512:
+        if infos_adc["remote_c1"] == 0:
+            security.lockSequence()
+        infos_adc["remote_c1"] = 1
+    else:
+        infos_adc["remote_c1"] = 0
+    #print("ch0: {} | ch1: {}".format(remote_channel_0, remote_channel_1))
 
     #main battery voltage
-    battery_48v = mcp.read_adc(7) * (3.3/1023.0) * 19.10
-    battery_48v_average.add(battery_48v)
-    infos_adc["battery_48v"] = battery_48v_average.get()
+    #battery_48v = mcp.read_adc(7) * (3.3/1023.0) * 19.10
+    #battery_48v_average.add(battery_48v)
+    #infos_adc["battery_48v"] = battery_48v_average.get()
     
     #12v bus voltage
     bus_12v = mcp.read_adc(1) * (3.3/1023.0) * 5.78
@@ -89,7 +107,7 @@ while prog.isRunning():
     
     #save info to file
     io.writeInfosADC(infos_adc)
-    time.sleep(0.3)
+    time.sleep(0.2)
 
 
 prog.end()

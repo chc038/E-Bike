@@ -1,6 +1,6 @@
 import time
 import serial
-import adafruit_gps #sudo pip3 install adafruit-circuitpython-gps
+import adafruit_gps #(sudo) pip3 install adafruit-circuitpython-gps --break-system-packages
 import gps_functions
 import io_functions as io
 import security_functions as security

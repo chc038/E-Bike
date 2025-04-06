@@ -1,7 +1,0 @@
-{
-  "unit": 1,
-  "buzzer": 1,
-  "vibration_detection": 0,
-  "vibration_sensitivity": 1000,
-  "virtual_fence": 1
-}

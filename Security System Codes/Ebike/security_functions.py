@@ -29,6 +29,7 @@ def lockStateToStr(state):
         return None
 
 def unlockSequence():
+    io.turnSigBlink()
     lockSet(0)
     io.power12vOn()
     io.taillightOn()
@@ -40,7 +41,11 @@ def unlockSequence():
     email.sendPhotoEmail(subject='Ebike Operations', message='Ebike is Unlocked!\n' +
                          gps.getGPSLocation() + '\n' + time.strftime('%c'))
     print("Ebike is Unlocked!")
+    #time.sleep(0.1)
+    #io.turnSigBlink()
+    
 def lockSequence():
+    io.turnSigBlink()
     gps.setParkLocation()
     lockSet(1)
     io.power12vOff()
@@ -53,6 +58,8 @@ def lockSequence():
     email.sendPhotoEmail(subject='Ebike Operations', message='Ebike is Locked!\n' +
                          gps.getGPSLocation() + '\n' + time.strftime('%c'))
     print("Ebike is Locked!")
+    #time.sleep(0.1)
+    #io.turnSigBlink()
 def homeSequence():
     lockSet(2)
     io.power12vOff()

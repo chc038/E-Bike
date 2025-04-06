@@ -3,7 +3,7 @@ import io_functions as io
 import time
 import serial
 #download from: https://github.com/LiamBindle/PyVESC
-#dependency: pip install crccheck
+#dependency: pip install crccheck --break-system-packages
 #may need to change "_comm_forward_can = 34" in pyvesc/protocol/base.py for can bus forwarding to work
 import pyvesc
 from pyvesc.VESC.messages import GetValues

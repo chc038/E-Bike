@@ -1,13 +1,13 @@
 # E-Bike Project Description
- I started this e-bike project many years ago. Starting with converting this bicycle to an e-bike, I have made many big changes to the powertrain and other systems throughout the years. The newest version is documented in this depository, including CAD files for the electric powertrain and python codes for the security system.                    
- <img width="500" alt="Screenshot 2023-11-04 at 5 46 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/c9ce0569-adf2-4f7a-9de5-bf45d7e73fc9">
+ This e-bike project was started many years ago. Starting with converting this bicycle to an e-bike, I have made many changes to the powertrain and other systems throughout the years. This depository includs CAD files for the electric powertrain and python codes for the security system.                    
+ <img width="500" src="Fig/full_side_view.jpeg" alt="Full Size View">
 
 
 
 
 # Features
-- 30 mph top speed
-- Accelerates from 0 to 25mph in 3.0 seconds; from 0 to 30mph in 4.8 seconds. (Measured with the same 10Hz GPS module, my Corolla Hybrid did 0-25 in 3.2 seconds and 0-30 in 3.7 seconds) 
+- 35 mph top speed
+- Accelerates from 0 to 30mph in 3.2 seconds. (Measured with the same GPS module, my car did 0-30 in 3.7 seconds) 
 - Dual electric motors with peak power output of 6000W.
 - Custom made 48V, 12Ah lithium-ion battery pack. 
 - 15 miles of range at top speed. Range can be extended to around 40 miles with additional battery packs.
@@ -16,22 +16,23 @@
 
 # Electric Powertrain
 - All CAD models were made in Fusion 360              
-  <img width="500" alt="Screenshot 2023-11-04 at 10 42 51 AM" src="https://github.com/chc038/E-Bike/assets/146500723/494649b3-90b0-4281-988f-ff030b1dea6b">\
+  <img width="500" src="Fig/powertrain_cad.png" alt="Powertrain CAD">
 
 - FEA simulations using Ansys and Fusion 360 to assist with the design of the motor mount
-  <img width="500" alt="Screenshot 2023-10-03 at 3 54 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/54a93b7c-6a0e-4a5b-b0a0-0592d6931f8e">
+  <img width="500" alt="Powertrain FEA" src="https://github.com/chc038/E-Bike/assets/146500723/54a93b7c-6a0e-4a5b-b0a0-0592d6931f8e">
 
-- Plastic parts were 3D printed on my modified Ender-3 in PLA and Nylon; aluminum parte were machined on my DIY CNC mill
-  <img width="500" alt="Screenshot 2023-11-04 at 9 09 38 PM" src="https://github.com/chc038/E-Bike/assets/146500723/bd45c499-08dc-4cfe-80fe-32a6447f7c04">
+- Plastic parts were 3D printed in PLA and Nylon; aluminum parte were machined on my CNC machine
+  <img width="500" alt="Machining" src="https://github.com/chc038/E-Bike/assets/146500723/bd45c499-08dc-4cfe-80fe-32a6447f7c04">
   
 - Custom made lithium-ion battery pack by spot welding together 42 21700 cells in a 14S3P configuration.
-  <img width="500" alt="Screenshot 2023-11-04 at 6 14 55 PM" src="https://github.com/chc038/E-Bike/assets/146500723/b7e855f1-4201-4519-81a3-1e68df08a4a2">
+  <img width="500" alt="Battery Pack" src="https://github.com/chc038/E-Bike/assets/146500723/b7e855f1-4201-4519-81a3-1e68df08a4a2">
 
 - More pictures of the electric powertrain below.                   
-  <img width="500" alt="Screenshot 2023-11-04 at 5 30 08 PM" src="https://github.com/chc038/E-Bike/assets/146500723/680c208d-1d2d-4b31-8d12-51081b808b94">
+  <img width="500" alt="Powertrain Picture (Top)" src="Fig/powertrain_pic_top.jpeg">
                                                    
-  <img width="240" alt="Screenshot 2023-11-04 at 5 30 36 PM" src="https://github.com/chc038/E-Bike/assets/146500723/4a39eb37-b202-4b2d-9359-3a15555519a0">
-  <img width="260" alt="Screenshot 2023-11-04 at 5 31 03 PM" src="https://github.com/chc038/E-Bike/assets/146500723/5bc778e5-5d76-4545-9186-9d3da128d138">
+  <img width="250" alt="Powertrain Picture (Right Side)" src="Fig/powertrain_pic_side.jpeg">
+
+  <img width="250" alt="Powertrain Picture (Left Side)" src="Fig/powertrain_other_side.jpeg">
 
 
 
@@ -39,19 +40,21 @@
 
 
 # Security System
-- System is based on a raspeberry pi computer with multiple sensors connected such as GPS module, IMU, ADC. All the programs that makes this system work are written in python. I made this system for theft prevension purposes.
+- System is based on a raspeberry pi computer with multiple sensors connected such as GPS module, IMU, ADC. All the programs that makes this system work are written in python. This system was made for theft prevension purposes.
   
 - In lock mode, system automatically sends emails containing gps coordinates and picture when suspicious activities such as vibration or significant changes in GPS coordinates are detected.                  
-  <img width="350" alt="Screenshot 2023-11-04 at 6 21 10 PM" src="https://github.com/chc038/E-Bike/assets/146500723/647c9174-856f-4f27-9bd9-b462b14fa3d4">
+  <img width="350" alt="Aleart Email" src="https://github.com/chc038/E-Bike/assets/146500723/647c9174-856f-4f27-9bd9-b462b14fa3d4">
 
 - Remote control of things such as lights and viewing live camera feed through VNC remote desktop.
-  <img width="500" alt="Screenshot 2023-11-04 at 6 22 55 PM" src="https://github.com/chc038/E-Bike/assets/146500723/2c16cf52-e460-4481-a4e6-7108d24fc3dc">
+  <img width="500" alt="Remote Controls" src="https://github.com/chc038/E-Bike/assets/146500723/2c16cf52-e460-4481-a4e6-7108d24fc3dc">
 
 - 7" touchscreen showing a custon GUI serves as dashboard of the e-bike.
-  <img width="500" alt="Screenshot 2023-11-04 at 6 24 04 PM" src="https://github.com/chc038/E-Bike/assets/146500723/52a2c5a4-00b1-4148-9939-b0fe712caa43">
+  <img width="500" alt="Dashboard" src="https://github.com/chc038/E-Bike/assets/146500723/52a2c5a4-00b1-4148-9939-b0fe712caa43">
 
 - 3D printed custom housing for electrical components           
-  <img width="500" alt="Screenshot 2023-11-04 at 6 25 08 PM" src="https://github.com/chc038/E-Bike/assets/146500723/b3ae7305-1763-42b2-8c32-c9f2d7d520d3">
+  <img width="500" alt="Electronics Box CAD" src="Fig/elec_box_cad.png">
+  
+  <img width="500" alt="Battery Box CAD" src="Fig/batt_box_cad.png">
 
 
 
