@@ -1,16 +1,16 @@
 {
   "isOn": 1,
-  "inpVoltage": 56.7,
+  "inpVoltage": 53.4,
   "avgInputCurrent": 0.0,
   "avgMotorCurrent": 0.0,
   "rpm": 0.0,
-  "tempMosfet": 29.2,
-  "tempMotor": 20.6,
+  "tempMosfet": 33.4,
+  "tempMotor": 26.5,
   "isOn2": 1,
-  "inpVoltage2": 56.9,
+  "inpVoltage2": 53.5,
   "avgInputCurrent2": 0.0,
   "avgMotorCurrent2": 0.0,
   "rpm2": 0.0,
-  "tempMosfet2": 30.2,
-  "tempMotor2": 20.6
+  "tempMosfet2": 34.2,
+  "tempMotor2": 26.5
 }

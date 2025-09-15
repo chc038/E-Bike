@@ -93,33 +93,39 @@ while prog.isRunning():
 
         #taillight
         taillight_state = outputs["taillight"]
-        if time.time() - turn_signal_activated < 0.5 and taillight_state == 1:
-            taillight_state = 2; #disable taillight blinking when turn signal is on
-        if taillight_state == 0:
+        # change to shutting off VESC
+        if taillight_state == 1:
             taillight.off()
-        elif taillight_state == 1:
-            if brake_state == 0: #when not braking, blink slowly
-                if taillight_timer.passed():
-                    if taillight_timer.getState() == 0:
-                        taillight.on()#on for 0.2s
-                        taillight_timer.refresh(new_period=0.2)
-                    else:
-                        taillight.off() #off for 1s
-                        taillight_timer.refresh(new_period=1)
-            else: #when braking, blink rapidly
-                taillight_timer.period = 0.2 #blink at 0.2s on/off  period
-                if taillight_timer.passed():
-                    if taillight_timer.getState() == 0:
-                        taillight.on()
-                        taillight_timer.refresh()
-                    else:
-                        taillight.off()
-                        taillight_timer.refresh()
-        elif taillight_state == 2:
-            if brake_state: #when turn signal on, turn on when braking and no blink
-                taillight.on()
-            else:
-                taillight.off()
+        elif taillight_state == 0:
+            taillight.on()
+        
+#         if time.time() - turn_signal_activated < 0.5 and taillight_state == 1:
+#             taillight_state = 2; #disable taillight blinking when turn signal is on
+#         if taillight_state == 0:
+#             taillight.off()
+#         elif taillight_state == 1:
+#             if brake_state == 0: #when not braking, blink slowly
+#                 if taillight_timer.passed():
+#                     if taillight_timer.getState() == 0:
+#                         taillight.on()#on for 0.2s
+#                         taillight_timer.refresh(new_period=0.2)
+#                     else:
+#                         taillight.off() #off for 1s
+#                         taillight_timer.refresh(new_period=1)
+#             else: #when braking, blink rapidly
+#                 taillight_timer.period = 0.2 #blink at 0.2s on/off  period
+#                 if taillight_timer.passed():
+#                     if taillight_timer.getState() == 0:
+#                         taillight.on()
+#                         taillight_timer.refresh()
+#                     else:
+#                         taillight.off()
+#                         taillight_timer.refresh()
+#         elif taillight_state == 2:
+#             if brake_state: #when turn signal on, turn on when braking and no blink
+#                 taillight.on()
+#             else:
+#                 taillight.off()
     
     time.sleep(0.01)
 

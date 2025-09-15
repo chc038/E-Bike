@@ -135,22 +135,42 @@ class CameraInfoDisplay():
             self.speed_canv.itemconfigure(self.speed_txt, text=round(speed*2.23694, 1))
             self.speed_canv.itemconfigure(self.speed_unit, text='mph')
         #update motor parameters
-        main_voltage = io.mainBatteryVoltage()
+        #main_voltage = io.mainBatteryVoltage()
+        #main_current = io.mainBatteryCurrent()
+        #if main_voltage != None and main_current != None:
+        #    self.motor_canv.itemconfigure(self.vol_txt, text=str(round(main_voltage, 1))+" V")
+        #    self.motor_canv.itemconfigure(self.pwr_txt, text=str(round(main_voltage*main_current/10)*10)+" W")
         main_current = io.mainBatteryCurrent()
-        if main_voltage != None and main_current != None:
-            self.motor_canv.itemconfigure(self.vol_txt, text=str(round(main_voltage, 1))+" V")
-            self.motor_canv.itemconfigure(self.pwr_txt, text=str(round(main_voltage*main_current/10)*10)+" W")
-        #update turn signal
-        turn_sig_state = io.turnSignalState()
-        if turn_sig_state == 0:
-            self.motor_canv.itemconfigure(self.turn_sig_left, fill='')
-            self.motor_canv.itemconfigure(self.turn_sig_right, fill='')
-        elif turn_sig_state == 1:
-            self.motor_canv.itemconfigure(self.turn_sig_left, fill='yellow')
-            self.motor_canv.itemconfigure(self.turn_sig_right, fill='')
-        elif turn_sig_state == 2:
-            self.motor_canv.itemconfigure(self.turn_sig_left, fill='')
-            self.motor_canv.itemconfigure(self.turn_sig_right, fill='yellow')
+        motor_voltage = io.motorInputVoltage()
+        motor_current = io.motorInputCurrent()
+        motor2_current = io.motor2InputCurrent()
+        vesc_state = io.vescState()
+        vesc2_state = io.vesc2State()
+        if main_current != None:
+            if vesc_state == 1 and vesc2_state == 1 and motor_voltage != None and motor_current != None and motor2_current != None:
+                total_current = main_current + motor_current + motor2_current
+                total_power = motor_voltage*total_current
+                self.motor_canv.itemconfigure(self.vol_txt, text=str(round(motor_voltage, 1))+" V")
+                self.motor_canv.itemconfigure(self.pwr_txt, text=str(round(total_power/10)*10)+" W")
+            elif vesc_state == 1 and motor_voltage != None and motor_current != None:
+                total_current = main_current + motor_current
+                total_power = motor_voltage*total_current
+                self.motor_canv.itemconfigure(self.vol_txt, text=str(round(motor_voltage, 1))+" V")
+                self.motor_canv.itemconfigure(self.pwr_txt, text=str(round(total_power/10)*10)+" W")
+            elif vesc_state == 0: #vesc off, ignore vesc data
+                self.motor_canv.itemconfigure(self.vol_txt, text=str("0.0 V"))
+                self.motor_canv.itemconfigure(self.pwr_txt, text=str("0 W"))
+            #update turn signal
+            turn_sig_state = io.turnSignalState()
+            if turn_sig_state == 0:
+                self.motor_canv.itemconfigure(self.turn_sig_left, fill='')
+                self.motor_canv.itemconfigure(self.turn_sig_right, fill='')
+            elif turn_sig_state == 1:
+                self.motor_canv.itemconfigure(self.turn_sig_left, fill='yellow')
+                self.motor_canv.itemconfigure(self.turn_sig_right, fill='')
+            elif turn_sig_state == 2:
+                self.motor_canv.itemconfigure(self.turn_sig_left, fill='')
+                self.motor_canv.itemconfigure(self.turn_sig_right, fill='yellow')
 
 
 class MessageHandle():

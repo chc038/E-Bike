@@ -55,7 +55,7 @@ class Battery():
 
 
 time.sleep(5)
-main_battery = Battery(42, dis_vol=10, buffer=2)
+main_battery = Battery(43, dis_vol=10, buffer=2)
 aux_battery = Battery(9.3)
 
 prog.start()
