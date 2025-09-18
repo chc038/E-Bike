@@ -12,7 +12,7 @@ def readSchedule(filename='Program_Files/charge_schedule.json'):
     return json.loads(content)
 
 
-PLUG_IP = "192.168.50.136"
+PLUG_IP = "192.168.50.231"
 BASE_CMD = "http://" + PLUG_IP + "/cm?user=admin&password=Ulw9f4&"
 ON_CMD = BASE_CMD + "cmnd=Power%20ON"
 OFF_CMD = BASE_CMD + "cmnd=Power%20OFF"

@@ -1,8 +1,8 @@
 {
   "key_switch": 0,
-  "bus_12v": 11.277836559139786,
-  "main_current": 0.23114210985178746,
-  "cpu_temperature": 66.08813333333335,
+  "bus_12v": 11.241167741935483,
+  "main_current": 0.3188840453356579,
+  "cpu_temperature": 69.31856666666667,
   "memory": "45G",
   "remote_c0": 0,
   "remote_c1": 0

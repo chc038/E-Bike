@@ -278,6 +278,23 @@ def motorTemperature():
 def mosfetTemperature():
     return getInfoVESC("tempMosfet")
 
+def vesc1State():
+    return getInfoVESC("isOn1")
+def motor1InputVoltage():
+    return getInfoVESC("inpVoltage1")
+def motor1InputCurrent():
+    return getInfoVESC("avgInputCurrent1")
+def motor1RPM():
+    return getInfoVESC("rpm1")
+def motor1WattHours():
+    return getInfoVESC("wattHours1")
+def motor1Distance():
+    return getInfoVESC("tachometer1")
+def motor1Temperature():
+    return getInfoVESC("tempMotor1")
+def mosfet1Temperature():
+    return getInfoVESC("tempMosfet1")
+
 def vesc2State():
     return getInfoVESC("isOn2")
 def motor2InputVoltage():
